@@ -21,27 +21,28 @@ pipeline{
             // }
         }
 
-        stage("Push Image") {
+        // stage("Push Image") {
+        //     steps{
+        //         script{
+        //             docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
+        //                 dockerapp.push("latest")
+        //                 dockerapp.push("${env.BUILD_ID}")
+        //             }
+        //         }
+        //     }
+        
+        // }
+
+        stage("Test app"){
+
             steps{
                 script{
-                    docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
-                        dockerapp.push("latest")
-                        dockerapp.push("${env.BUILD_ID}")
+                    docker.image("dev-api-app").withRun('-p 8080:8080') {
+                        sh 'sleep 30'
+                        sh 'curl http://localhost:8080'
                     }
                 }
             }
-        
-        }
-    }
-    post{
-        always{
-            echo "========always========"
-        }
-        success{
-            echo "========pipeline executed successfully ========"
-        }
-        failure{
-            echo "========pipeline execution failed========"
         }
     }
 }
