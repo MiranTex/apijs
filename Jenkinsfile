@@ -1,10 +1,12 @@
 pipeline{
     agent any
-    
+
     stages{
         stage("Start"){
             steps{
-                echo "========executing Starting========"
+                script{
+                    docker = docker.build("dev/api", '-f dockerfile .')
+                }
             }
             post{
                 always{
