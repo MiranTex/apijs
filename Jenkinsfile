@@ -5,7 +5,7 @@ pipeline{
         stage("Start"){
             steps{
                 script{
-                    docker = docker.build("dev/api", '-f dockerfile .')
+                    docker = docker.build("dev-api-app", '-f dockerfile .')
                 }
             }
             post{
