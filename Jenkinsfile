@@ -2,23 +2,35 @@ pipeline{
     agent any
 
     stages{
-        stage("Start"){
+        stage("Build"){
             steps{
                 script{
-                    docker = docker.build("dev-api-app", '-f dockerfile .')
+                    dockerapp = docker.build("dev-api-app", '-f dockerfile .')
                 }
             }
-            post{
-                always{
-                    echo "========always========"
-                }
-                success{
-                    echo "========A executed successfully========"
-                }
-                failure{
-                    echo "========A execution failed========"
+            // post{
+            //     always{
+            //         echo "========always========"
+            //     }
+            //     success{
+            //         echo "========A executed successfully========"
+            //     }
+            //     failure{
+            //         echo "========A execution failed========"
+            //     }
+            // }
+        }
+
+        stage("Push Image") {
+            steps{
+                script{
+                    docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
+                        dockerapp.push("latest")
+                        dockerapp.push("${env.BUILD_ID}")
+                    }
                 }
             }
+        
         }
     }
     post{
