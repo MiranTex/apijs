@@ -37,9 +37,9 @@ pipeline{
 
             steps{
                 script{
-                    docker.image("dev-api-app").withRun('-p 8080:8080') {
+                    docker.image("dev-api-app").withRun('-p 3000:3000') {
                         sh 'sleep 30'
-                        sh 'curl http://localhost:8080'
+                        sh 'curl http://localhost:3000'
                     }
                 }
             }
