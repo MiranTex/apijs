@@ -15,7 +15,7 @@ pipeline{
         stage("Test"){
             steps{
                 script{
-                    dockerapp.withRun{ c->
+                    dockerapp.run{ c->
                         sh 'npm test'
                     }
                 }
