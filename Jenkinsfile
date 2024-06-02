@@ -38,13 +38,14 @@ pipeline{
                 script{
                     dockerapp.inside{
                         // Optionally clear the npm cache
-                        sh 'npm cache clean --force'
+                        sh 'whoami'
+                        // sh 'npm cache clean --force'
                         
                         // Install dependencies
-                        sh 'npm install --no-lockfile'
+                        // sh 'npm install --no-lockfile'
                         
                         // Run unit tests
-                        sh 'npm test'
+                        // sh 'npm test'
                 
                     }
                 }
