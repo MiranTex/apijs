@@ -8,10 +8,6 @@ pipeline{
                     dockerapp = docker.build("dev-api-app", '-f dockerfile .')
                     dockerContainer = dockerapp.run('-p 3000:3000 -d')
 
-                    sleep 10
-
-                    def containerId = dockerContainer.id
-
     // Execute comandos dentro do contêiner
   
     // Adicione outros comandos conforme necessário
@@ -45,7 +41,7 @@ pipeline{
         stage("Run unit tests"){
             steps{
                 script{
-                    sh "docker exec ${containerId} npm test"
+                    sh "docker exec ${dockerContainer} npm test"
                 }
             }
    
