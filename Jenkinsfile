@@ -37,9 +37,17 @@ pipeline{
             steps{
                 script{
                     dockerapp.inside{
-                        sh 'echo "Running unit tests"'
+                        sh 'mkdir -p ~/.npm && chown -R $(id -u):$(id -g) ~/.npm'
+                        
+                        // Optionally clear the npm cache
+                        sh 'npm cache clean --force'
+                        
+                        // Install dependencies
                         sh 'npm install'
+                        
+                        // Run unit tests
                         sh 'npm test'
+                
                     }
                 }
             }
