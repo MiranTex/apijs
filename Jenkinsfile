@@ -34,24 +34,17 @@ pipeline{
         
         // }
 
-        // stage("Run unit tests"){
-        //     steps{
-        //         script{
-        //             // dockerContainer.inside{
-        //                 // Optionally clear the npm cache
-        //                 // sh 'npm cache clean --force'
-                        
-        //                 // Install dependencies
-        //                 // sh 'npm install --no-lockfile'
-                        
-        //                 // Run unit tests
-        //                 // sh 'npm test'
+        stage("Run unit tests"){
+            steps{
+                script{
+                    dockerContainer.inside{
+                        sh 'npm test'
                 
-        //             // }
-        //         }
-        //     }
+                    }
+                }
+            }
    
-        // }
+        }
 
         
     }
@@ -61,6 +54,7 @@ pipeline{
             //Stop and remove the container
             script{
                 dockerContainer.stop()
+                dockerContainer.remove()
             }
             // dockerContainer.stop()
         }
