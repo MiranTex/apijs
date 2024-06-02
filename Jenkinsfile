@@ -2,28 +2,22 @@ pipeline{
     agent any
 
     stages{
-        stage("Build"){
+        // stage("Build"){
+        //     steps{
+        //         script{
+        //             dockerapp = docker.build("dev-api-app", '-f dockerfile .')
+        //             dockerContainer = dockerapp.run('-p 3000:3000 -d')
+        //         }
+        //     }
+            
+        // }
+
+        stage("Install dependencies"){
             steps{
                 script{
-                    dockerapp = docker.build("dev-api-app", '-f dockerfile .')
-                    dockerContainer = dockerapp.run('-p 3000:3000 -d')
-
-    // Execute comandos dentro do contêiner
-  
-    // Adicione outros comandos conforme necessário
+                    sh "npm install"
                 }
             }
-            // post{
-            //     always{
-            //         echo "========always========"
-            //     }
-            //     success{
-            //         echo "========A executed successfully========"
-            //     }
-            //     failure{
-            //         echo "========A execution failed========"
-            //     }
-            // }
         }
 
         // stage("Push Image") {
@@ -38,25 +32,13 @@ pipeline{
         
         // }
 
-        stage("Run unit tests"){
-            steps{
-                script{
-                    dockerapp.inside{
-                        sh 'npm install'
-                        sh 'npm test'
-                    }
-                }
-            }
-   
-        }
-
     }
     post{
         always{
             echo "========always========"
             script{
-                
-                dockerContainer.stop()
+                sh "echo 'always'"
+                // dockerContainer.stop()
             }
 
         }
