@@ -41,7 +41,7 @@ pipeline{
         stage("Run unit tests"){
             steps{
                 script{
-                    dockerContainer.inside{
+                    dockerapp.inside{
                         // sh 'npm install'
                         sh 'npm test'
                     }
