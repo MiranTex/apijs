@@ -38,7 +38,7 @@ pipeline{
                 script{
                     dockerapp.inside{
                         // Optionally clear the npm cache
-                        sh 'whoami'
+                        sh 'ls -l'
                         // sh 'npm cache clean --force'
                         
                         // Install dependencies
