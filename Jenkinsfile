@@ -42,6 +42,7 @@ pipeline{
             steps{
                 script{
                     dockerapp.inside{
+                        sh 'chown -R 108:117 "/usr/src/app/.npm-cache"'
                         sh 'npm install'
                         sh 'npm test'
                     }
