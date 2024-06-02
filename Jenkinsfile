@@ -53,6 +53,8 @@ pipeline{
     post{
         always{
             echo "========always========"
+            dockerContainer.stop()
+
         }
         success{
             echo "========A executed successfully========"
