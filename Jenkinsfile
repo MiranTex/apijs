@@ -2,23 +2,26 @@ pipeline{
     agent any
 
     stages{
-        // stage("Build"){
-        //     steps{
-        //         script{
-        //             dockerapp = docker.build("dev-api-app", '-f dockerfile .')
-        //             dockerContainer = dockerapp.run('-p 3000:3000 -d')
-        //         }
-        //     }
-            
-        // }
-
-        stage("Install dependencies"){
+        stage("Build"){
             steps{
                 script{
-                    sh "npm install"
+                    dockerapp = docker.build("dev-api-app", '-f dockerfile .')
+                    dockerContainer = dockerapp.run('-p 3000:3000 -d')
+                }
+            }
+            
+        }
+
+        stage("Test"){
+            steps{
+                script{
+                    dockerapp.withRun{ c->
+                        sh 'npm test'
+                    }
                 }
             }
         }
+
 
         // stage("Push Image") {
         //     steps{
@@ -38,7 +41,7 @@ pipeline{
             echo "========always========"
             script{
                 sh "echo 'always'"
-                // dockerContainer.stop()
+                dockerContainer.stop()
             }
 
         }
