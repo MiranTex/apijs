@@ -4,9 +4,6 @@ WORKDIR /app
 
 COPY package*.json .
 
-#yarn install
-RUN npm install -g yarn
-
 RUN npm install --no-lockfile
 
 COPY . .
