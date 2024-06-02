@@ -53,7 +53,10 @@ pipeline{
     post{
         always{
             echo "========always========"
-            dockerContainer.stop()
+            script{
+                
+                dockerContainer.stop()
+            }
 
         }
         success{
