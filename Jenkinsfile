@@ -8,7 +8,10 @@ pipeline{
         stage("Build"){
             steps{
                 script{
-                    dockerapp = docker.build("dev-api-app", '-f dockerfile .')
+                    dockerapp = docker.build("dev-api-app", '-f dockerfile .').withEnv(
+                                'npm_config_cache=npm-cache',
+                                'HOME=.'
+                    )
                     dockerContainer = dockerapp.run('-p 3000:3000 -d')
                 }
             }
