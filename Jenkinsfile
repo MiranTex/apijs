@@ -39,7 +39,6 @@ pipeline{
                 script{
                     dockerContainer.inside{
                         // Optionally clear the npm cache
-                        sh 'ls -l'
                         // sh 'npm cache clean --force'
                         
                         // Install dependencies
