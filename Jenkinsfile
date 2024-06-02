@@ -42,7 +42,7 @@ pipeline{
             steps{
                 script{
                     dockerapp.inside{
-                        sh 'sudo npm install'
+                        sh 'npm install'
                         sh 'npm test'
                     }
                 }
