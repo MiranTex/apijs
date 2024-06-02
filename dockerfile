@@ -13,7 +13,7 @@ COPY package*.json .
 
 USER node
 
-RUN npm install --no-lockfile
+RUN npm install --no-lockfile --no-cache
 
 COPY . .
 

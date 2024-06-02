@@ -43,7 +43,7 @@ pipeline{
                         sh 'npm cache clean --force'
                         
                         // Install dependencies
-                        sh 'npm install'
+                        sh 'npm install --no-lockfile --no-cache'
                         
                         // Run unit tests
                         sh 'npm test'
