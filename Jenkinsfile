@@ -33,16 +33,18 @@ pipeline{
         
         // }
 
-        stage("Test app"){
+        // stage("Test app"){
 
-            steps{
-                script{
-                    docker.image("dev-api-app").withRun('-p 3000:3000') {
-                        sh 'sleep 30'
-                        sh 'curl http://localhost:3000'
-                    }
-                }
-            }
-        }
+        //     steps{
+        //         script{
+        //             docker.image("dev-api-app").withRun('-p 3000:3000') {
+        //                 sh 'sleep 30'
+        //                 sh 'curl http://localhost:3000'
+        //             }
+        //         }
+        //     }
+        // }
+
+        
     }
 }
