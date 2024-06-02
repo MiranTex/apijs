@@ -37,8 +37,6 @@ pipeline{
             steps{
                 script{
                     dockerapp.inside{
-                        sh 'mkdir -p ~/.npm && chown -R $(id -u):$(id -g) ~/.npm'
-                        
                         // Optionally clear the npm cache
                         sh 'npm cache clean --force'
                         
