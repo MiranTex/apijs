@@ -46,14 +46,10 @@ pipeline{
    
         }
 
-        post{
+    }
+    post{
         always{
             echo "========always========"
-            //Stop and remove the container
-            script{
-                dockerContainer.stop()
-            }
-            // dockerContainer.stop()
         }
         success{
             echo "========A executed successfully========"
@@ -61,8 +57,5 @@ pipeline{
         failure{
             echo "========A execution failed========"
         }
-    }
-        
-    }
-    
+    }    
 }
