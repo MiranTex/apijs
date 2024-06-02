@@ -8,6 +8,8 @@ pipeline{
                     dockerapp = docker.build("dev-api-app", '-f dockerfile .')
                     dockerContainer = dockerapp.run('-p 3000:3000 -d')
 
+                    sleep 10
+
                     def containerId = dockerContainer.id
 
     // Execute comandos dentro do contêiner
