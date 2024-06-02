@@ -4,6 +4,8 @@ WORKDIR /app
 
 COPY package*.json .
 
+#yarn install
+RUN npm install -g yarn
 
 RUN npm install --no-lockfile
 
@@ -17,4 +19,4 @@ EXPOSE 3000
 
 # RUN yarn build
 
-# CMD ["npm","run","dev"]
+CMD ["npm","run","dev"]

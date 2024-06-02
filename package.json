@@ -1,16 +1,17 @@
 {
   "name": "apijs",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "main.js",
   "license": "MIT",
-
-
   "scripts": {
+    "dev": "nodemon main.js",
     "test": "jest"
   },
-  
   "dependencies": {
     "express.js": "^1.0.0",
     "jest": "^29.7.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.2"
   }
 }
