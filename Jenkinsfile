@@ -59,7 +59,10 @@ pipeline{
         always{
             echo "========always========"
             //Stop and remove the container
-            dockerContainer.stop()
+            script{
+                dockerContainer.stop()
+            }
+            // dockerContainer.stop()
         }
         success{
             echo "========A executed successfully========"
