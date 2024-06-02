@@ -37,7 +37,7 @@ pipeline{
         stage("Run unit tests"){
             steps{
                 script{
-                    dockerContainer.inside{
+                    // dockerContainer.inside{
                         // Optionally clear the npm cache
                         // sh 'npm cache clean --force'
                         
@@ -47,12 +47,25 @@ pipeline{
                         // Run unit tests
                         // sh 'npm test'
                 
-                    }
+                    // }
                 }
             }
    
         }
 
         
+    }
+    post{
+        always{
+            echo "========always========"
+            # Stop and remove the container
+            dockerContainer.stop()
+        }
+        success{
+            echo "========A executed successfully========"
+        }
+        failure{
+            echo "========A execution failed========"
+        }
     }
 }
