@@ -6,6 +6,7 @@ pipeline{
             steps{
                 script{
                     dockerapp = docker.build("dev-api-app", '-f dockerfile .')
+                    dockerContainer = dockerapp.run('-p 3000:3000 -d')
                 }
             }
             // post{
@@ -36,7 +37,7 @@ pipeline{
         stage("Run unit tests"){
             steps{
                 script{
-                    dockerapp.inside{
+                    dockerContainer.inside{
                         // Optionally clear the npm cache
                         sh 'ls -l'
                         // sh 'npm cache clean --force'
