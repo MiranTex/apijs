@@ -1,7 +1,7 @@
 pipeline{
     agent any
     environment {
-        HOME = "${env.WORKSPACE}"
+        HOME = "."
     }
 
     stages{
