@@ -58,7 +58,7 @@ pipeline{
     post{
         always{
             echo "========always========"
-            # Stop and remove the container
+            //Stop and remove the container
             dockerContainer.stop()
         }
         success{
