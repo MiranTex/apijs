@@ -11,7 +11,7 @@ RUN mkdir -p /usr/src/app/.npm && chown -R user:user /usr/src/app/.npm
 RUN mkdir -p /usr/src/app/.npm-cache/_cacache && chown -R user:user /usr/src/app/.npm-cache/_cacache
 RUN mkdir -p /app/node_modules && chown -R user:user /app/node_modules
 RUN chown -R 999:999 /usr/src/app/.npm-cache
-RUN chmod -R 777 .
+RUN chmod -R 777 /usr/src/app
 # /usr/src/app/.npm-cache/_cacache
 
 # Set npm to use the new cache directory
